@@ -6,6 +6,7 @@
 #include <sstream>
 #include <vector>
 #include <algorithm>
+#include <sqlite3.h>
 
 struct Record {
 	std::string date;
@@ -18,7 +19,6 @@ class programSystem {
 private:
 	Record* head;
 public:
-	programSystem() : head(nullptr) {}
 	void help();
 	void record_();
 	void delete_(const std::string& targetDate);
