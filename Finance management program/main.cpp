@@ -10,8 +10,6 @@ using namespace std;
 int main() {
 	programSystem s;
 	cout << "Finane management Program [Version 0.1]" << endl;
-	cout << "Author : dvdsvds" << endl;
-	cout << "GitHub Address : https://github.com/dvdsvds" << endl;
 	// record income and expenses
 	while (true) {
 		string command;
@@ -30,10 +28,24 @@ int main() {
 		if (!words.empty()) {
 			transform(words[0].begin(), words[0].end(), words[0].begin(), ::tolower);
 			if (words[0] == "help" || words[0] == "h") { // command : help
-				s.help();
+				if (words.size() > 1) {
+					string howToUseCommand = words[1];
+					s.help(howToUseCommand);
+
+				}
 			}
 			else if (words[0] == "function" || words[0] == "f") {
 				if (words.size() > 1) {
+					string opt = words[1];
+					if (opt == "-showall" || opt == "-sa") {
+						s.showAll();
+					}
+					else {
+						cout << "Unknown Command : " << opt << endl;
+					}
+				}
+
+				if (words.size() > 2) {
 					string opt = words[1];
 					string targetdate = words[2];
 
@@ -47,13 +59,18 @@ int main() {
 						s.show(targetdate);
 					}
 					else {
-						cout << "Unknown Command : "<< opt << "" << endl;
+						cout << "Unknown Command : "<< opt << endl;
 					}
 				}
 			}
 			else if (words[0] == "exit") { // command : exit
 				return 0;
 			}
+			else if (words[0] == "about") {
+				cout << "Author : dvdsvds" << endl;
+				cout << "GitHub Address : https://github.com/dvdsvds" << endl;
+			}
+			
 			else { // when a wrong command was typed by the user
 				cout << "This is not a correct command." << endl << "Please type again." << endl;
 			}
