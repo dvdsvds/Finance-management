@@ -1,4 +1,4 @@
-/* 
+/*
 Finane management Programe
 - function -
 1. record and delete incomes and expenses
@@ -59,7 +59,7 @@ int main() {
 						s.show(targetdate);
 					}
 					else {
-						cout << "Unknown Command : "<< opt << endl;
+						cout << "Unknown Command : " << opt << endl;
 					}
 				}
 			}
@@ -70,7 +70,7 @@ int main() {
 				cout << "Author : dvdsvds" << endl;
 				cout << "GitHub Address : https://github.com/dvdsvds" << endl;
 			}
-			
+
 			else { // when a wrong command was typed by the user
 				cout << "This is not a correct command." << endl << "Please type again." << endl;
 			}
