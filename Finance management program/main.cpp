@@ -35,28 +35,72 @@ int main() {
 				}
 			}
 			else if (words[0] == "function" || words[0] == "f") {
-				if (words.size() > 1) {
+				if (words.size() == 1) {
+					cout << "No command provided." << endl;
+				}
+				else if (words.size() >= 2) {
 					string opt = words[1];
+
 					if (opt == "-showall" || opt == "-sa") {
 						s.showAll();
 					}
-					else {
-						cout << "Unknown Command : " << opt << endl;
-					}
-				}
-
-				if (words.size() > 2) {
-					string opt = words[1];
-					string targetdate = words[2];
-
+					
 					if (opt == "-record" || opt == "-r") {
-						s.record_(targetdate);
+						if (words.size() == 3) {
+							string targetdate = words[2];
+							s.record_(targetdate);
+						}
 					}
+
 					else if (opt == "-delete" || opt == "-d") {
-						s.delete_(targetdate);
+						if(words.size() == 3) {
+							string answer;
+							string targetdate = words[2];
+							s.show(targetdate);
+							cout << "Are you sure you want to delete?" << endl;
+							cout << "> ";
+							getline(cin, answer);
+							if (answer == "yes" || answer == "y") {
+								s.delete_(targetdate);
+							}
+							else if (answer == "No" || answer == "n") {
+								cout << "Cancle." << endl;
+							}
+
+						}
 					}
-					else if (opt == "-show" || opt == "-s") {
-						s.show(targetdate);
+					else if (opt == "-deleteall" || opt == "-da") {
+						string answer;
+						cout << "Are you sure you want to delete all data?" << endl;
+						cout << "> ";
+						getline(cin, answer);
+						if (answer == "yes" || answer == "y") {
+							s.deleteAll();
+						}
+						else if (answer == "No" || answer == "n") {
+							cout << "Cancle." << endl;
+						}
+						
+					}
+					else if (opt == "-show" || opt == "-showyear" || opt == "-showmonth" || opt == "-s" || opt == "-sy" || opt == "-sm") {
+						if (words.size() >= 3) {
+							string targetdate = words[2];
+							if (opt == "-sy") {
+								s.showYear(targetdate);
+							}
+							else if (opt == "-sm") {
+								s.showMonth(targetdate);
+							}
+							else if(opt == "-s") {
+								s.show(targetdate);
+							}
+							else {
+								cout << "Unknown Command : " << opt << endl;
+							}
+						}
+					}
+					else if (opt == "-showall" || opt == "-sa") {
+						s.showAll();
 					}
 					else {
 						cout << "Unknown Command : " << opt << endl;

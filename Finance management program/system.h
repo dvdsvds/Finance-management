@@ -8,7 +8,6 @@
 #include <limits>
 #include <algorithm>
 #include <Windows.h>
-#include <chrono>
 #include <sqlite3.h>
 
 
@@ -18,13 +17,23 @@ private:
 	double income;
 	double expense;
 public:
-	programSystem();
-	void help(const std::string& help);
 	void initDatabase();
+	programSystem();
+
 	static void setColor(int color);
-	void showAll();
+	void help(const std::string& help);
 	void record_(const std::string& targetDate);
+
+	// commands for displaying data
 	void delete_(const std::string& targetDate);
+	void deleteAll();
+	void deleteYear();
+
+	// commands for displaying data
 	void show(const std::string& targetdate);
+	void showAll();
+	void showYear(const std::string& targetYear);
+	void showMonth(const std::string& targetMonth);
+
 };
 #endif
