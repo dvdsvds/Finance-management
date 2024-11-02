@@ -1,7 +1,5 @@
 # Funtion
-
 ## You can show your income and expense data using the function command
----
 
 function -[option]
 
@@ -11,7 +9,7 @@ f -[option]
 
 f -[option] -[sub option]
 
----
+
 # Testing
 
 ## Testing the socket
