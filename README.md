@@ -13,5 +13,4 @@ f -[option] -[sub option]
 # Testing
 
 ## Testing the socket
----
 net -c [server address] [port]
