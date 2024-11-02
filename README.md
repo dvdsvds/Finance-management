@@ -8,7 +8,7 @@
 
 
 # Testing
-###Testing the socket
+### Testing the socket
   
   + net -c [host's address] [port] -> connect to server address
   + net -o [address] [port] -> open the server
